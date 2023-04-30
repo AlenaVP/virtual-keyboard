@@ -11,5 +11,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'import/extensions': 'warn',
+    'class-methods-use-this': 'warn',
   },
 };
