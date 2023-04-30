@@ -1,0 +1,42 @@
+.container {
+  margin: 0 auto;
+  font-family: "Trebuchet MS", "Helvetica", sans-serif;
+}
+
+.textarea {
+  display: block;
+  width: 700px;
+  height: 200px;
+  margin: 10px auto 10px;
+  padding: 10px;
+  font-size: 18px;
+  color: #444444;
+}
+
+.title {
+  display: block;
+}
+
+.description,
+.language,
+.title {
+  margin: 10px auto;
+  text-align: center;
+}
+
+.title {
+  font-size: 30px;
+  color: rgba(101, 134, 177, 0.8);
+  -webkit-text-stroke: 1px rgba(57, 154, 170, 0.8);
+  -webkit-text-fill-color: rgba(101, 134, 177, 0.8);
+}
+
+.keyboard {
+  width: 704px;
+  margin: 0 auto;
+  padding-top: 5px;
+  padding-right: 5px;
+  background: #888888;
+  border: 3px solid #222222;
+  border-radius: 5px;
+}
