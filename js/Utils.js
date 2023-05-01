@@ -4,4 +4,12 @@ export default class Utils {
     template.innerHTML = htmlString;
     return template.content.firstChild;
   }
+
+  addText(isActions, isArrows, element, text) {
+    let updatedText = element.textContent;
+    if (!(isActions || isArrows)) {
+      updatedText += text;
+    }
+    return updatedText;
+  }
 }
