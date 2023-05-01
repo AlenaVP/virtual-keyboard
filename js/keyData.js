@@ -1,6 +1,6 @@
 const rows = [];
 const actions = {
-  controls: ['Backspace', 'Tab', 'Enter', 'CapsLock', 'ShiftLeft', 'ShiftRight', 'AltLeft', 'AltRight', 'ControlLeft', 'ControlRight', 'MetaLeft', 'Delete'],
+  controls: ['Backspace', 'Tab', 'Enter', 'CapsLock', 'ShiftLeft', 'ShiftRight', 'AltLeft', 'AltRight', 'ControlLeft', 'ControlRight', 'MetaLeft'],
   arrows: ['ArrowUp', 'ArrowRight', 'ArrowDown', 'ArrowLeft'],
   keys: rows,
 };
@@ -164,7 +164,6 @@ rows[1] = [
       caps: '\\', down: '\\', up: '/', shiftCaps: '/',
     },
   },
-  { keyName: 'Delete', en: { down: 'Del', up: 'Del' }, ru: { down: 'Del', up: 'Del' } },
 ];
 rows[2] = [
   { keyName: 'CapsLock', en: { down: 'CapsLock', up: 'CapsLock' }, ru: { down: 'CapsLock', up: 'CapsLock' } },
