@@ -108,10 +108,10 @@ rows[0] = [
   {
     keyName: 'Minus',
     en: {
-      caps: '-', down: '-', up: '23', shiftCaps: '23',
+      caps: '-', down: '-', up: '_', shiftCaps: '_',
     },
     ru: {
-      caps: '-', down: '-', up: '23', shiftCaps: '23',
+      caps: '-', down: '-', up: '_', shiftCaps: '_',
     },
   },
   {
