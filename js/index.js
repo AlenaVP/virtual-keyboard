@@ -8,6 +8,10 @@ const appContainer = new AppContainer();
 
 body.prepend(appContainer.container);
 
+function toggleLang() {
+  return true;
+}
+
 function getVisibleKeyChilds() {
   const visibleKeyChilds = [];
   const keys = document.querySelectorAll('.key');
@@ -63,6 +67,12 @@ function toggleCapsLock(key) {
   }
 }
 
+function isCtrlLeftActive() {
+  const keys = [...document.querySelectorAll('.key')];
+  const ctrlLeft = keys.filter((key) => key.classList.contains('ControlLeft'));
+  return ctrlLeft[0].classList.contains('active');
+}
+
 function renderChars(event) {
   let key;
   let textContent;
@@ -79,6 +89,11 @@ function renderChars(event) {
     toggleCapsLock(key);
   } else {
     key.classList.add('active');
+    if (key.classList.contains('AltLeft')) {
+      if (isCtrlLeftActive()) {
+        toggleLang();
+      }
+    }
     const isActions = actions.controls.some((c) => key.classList.contains(c));
     const isArrows = actions.arrows.some((c) => key.classList.contains(c));
     const { textarea } = appContainer;
