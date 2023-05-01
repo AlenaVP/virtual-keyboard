@@ -1,6 +1,6 @@
 const rows = [];
 const actions = {
-  controls: ['Backspace', 'Tab', 'Enter', 'CapsLock', 'shiftLeft', 'shiftRight', 'altLeft', 'altRight', 'ctrlLeft', 'CtrlRight', 'metaLeft', 'delete'],
+  controls: ['Backspace', 'Tab', 'Enter', 'CapsLock', 'ShiftLeft', 'ShiftRight', 'AltLeft', 'AltRight', 'ControlLeft', 'ControlRight', 'MetaLeft', 'Delete'],
   arrows: ['ArrowUp', 'ArrowRight', 'ArrowDown', 'ArrowLeft'],
   keys: rows,
 };
@@ -237,7 +237,7 @@ rows[3] = [
   { keyName: 'ShiftRight', en: { down: 'Shift', up: 'Shift' }, ru: { down: 'Shift', up: 'Shift' } },
 ];
 rows[4] = [
-  { keyName: 'CtrlLeft', en: { down: 'Ctrl', up: 'Ctrl' }, ru: { down: 'Ctrl', up: 'Ctrl' } },
+  { keyName: 'ControlLeft', en: { down: 'Ctrl', up: 'Ctrl' }, ru: { down: 'Ctrl', up: 'Ctrl' } },
   { keyName: 'MetaLeft', en: { down: 'Win', up: 'Win' }, ru: { down: 'Win', up: 'Win' } },
   { keyName: 'AltLeft', en: { down: 'Alt', up: 'Alt' }, ru: { down: 'Alt', up: 'Alt' } },
   { keyName: 'Space', en: { down: ' ', up: ' ' }, ru: { down: ' ', up: ' ' } },
@@ -245,7 +245,7 @@ rows[4] = [
   { keyName: 'ArrowLeft', en: { down: '◄', up: '◄' }, ru: { down: '◄', up: '◄' } },
   { keyName: 'ArrowDown', en: { down: '▼', up: '▼' }, ru: { down: '▼', up: '▼' } },
   { keyName: 'ArrowRight', en: { down: '►', up: '►' }, ru: { down: '►', up: '►' } },
-  { keyName: 'CtrlRight', en: { down: 'Ctrl', up: 'Ctrl' }, ru: { down: 'Ctrl', up: 'Ctrl' } },
+  { keyName: 'ControlRight', en: { down: 'Ctrl', up: 'Ctrl' }, ru: { down: 'Ctrl', up: 'Ctrl' } },
 ];
 
 export { rows, actions };
