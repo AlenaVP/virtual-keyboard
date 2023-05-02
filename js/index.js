@@ -106,8 +106,12 @@ function renderChars(event) {
       event.preventDefault();
       textarea.textContent = Utils.prototype.addEnter(textarea);
     }
+
     const isActions = actions.controls.some((c) => key.classList.contains(c));
     const isArrows = actions.arrows.some((c) => key.classList.contains(c));
+    if (isArrows) {
+      textarea.textContent = Utils.prototype.addArrow(textarea, key);
+    }
     textarea.textContent = Utils.prototype.addText(isActions, isArrows, textarea, textContent);
   }
 }

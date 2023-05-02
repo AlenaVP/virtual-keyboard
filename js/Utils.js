@@ -30,4 +30,18 @@ export default class Utils {
     text += '\n';
     return text;
   }
+
+  addArrow(element, key) {
+    let text = element.textContent;
+    if (key.classList.contains('ArrowUp')) {
+      text += '▲';
+    } else if (key.classList.contains('ArrowRight')) {
+      text += '►';
+    } else if (key.classList.contains('ArrowDown')) {
+      text += '▼';
+    } else if (key.classList.contains('ArrowLeft')) {
+      text += '◄';
+    }
+    return text;
+  }
 }
