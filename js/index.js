@@ -83,7 +83,7 @@ function toggleLang(key) {
       .forEach((gc) => gc.classList.add('hidden'));
     ruSpans.forEach((rs) => rs.classList.add('hidden'));
     getChildren(enSpans)
-      .filter((gc) => !gc.classList.contains(keyCase))
+      .filter((gc) => gc.classList.contains(keyCase))
       .forEach((gc) => gc.classList.remove('hidden'));
     enSpans.forEach((es) => es.classList.remove('hidden'));
     lang = 'eng';
