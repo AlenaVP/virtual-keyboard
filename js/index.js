@@ -6,29 +6,92 @@ const body = document.querySelector('body');
 
 const appContainer = new AppContainer();
 
+let lang;
+
 body.prepend(appContainer.container);
 
-function toggleLang() {
+function getLangKey(key) {
+  const keyChildren = [...key.children];
+  const langKey = {};
+  keyChildren.forEach((child) => {
+    if (child.tagName === 'SPAN' && !child.classList.contains('hidden')) {
+      langKey.lang = child.className;
+      langKey.key = child;
+    }
+  });
+  return langKey;
+}
+
+function getKeyCaseName(langKey) {
+  const spans = [...langKey.key.children];
+  let keyCase = '';
+  spans.forEach((s) => {
+    const classNames = s.classList;
+    if (classNames.length === 1) {
+      [keyCase] = classNames;
+    }
+  });
+  return keyCase;
+}
+
+function getChildren(elementCollection) {
+  const children = [];
+  elementCollection.forEach((element) => {
+    const keyChildren = [...element.children];
+    keyChildren.forEach((child) => {
+      children.push(child);
+    });
+  });
+  return children;
+}
+
+function getVisibleKeyChildren() {
+  const visibleKeyChildren = [];
+  const keyChildren = getChildren(document.querySelectorAll('.key'));
+  keyChildren.forEach((child) => {
+    if (child.tagName === 'SPAN' && !child.classList.contains('hidden')) {
+      visibleKeyChildren.push(child);
+    }
+  });
+  return visibleKeyChildren;
+}
+
+function getLangSpans(language) {
+  const children = document.querySelectorAll('.key');
+  return getChildren(children).filter((child) => child.classList.contains(language));
+}
+
+function toggleLang(key) {
+  const langKey = getLangKey(key);
+  lang = langKey.lang;
+  const keyCase = getKeyCaseName(langKey);
+  const enSpans = getLangSpans('eng');
+  const ruSpans = getLangSpans('rus');
+  if (lang === 'eng') {
+    getChildren(enSpans)
+      .filter((gc) => !gc.classList.contains('hidden'))
+      .forEach((gc) => gc.classList.add('hidden'));
+    enSpans.forEach((es) => es.classList.add('hidden'));
+    getChildren(ruSpans)
+      .filter((gc) => gc.classList.contains(keyCase))
+      .forEach((gc) => gc.classList.remove('hidden'));
+    ruSpans.forEach((rs) => rs.classList.remove('hidden'));
+  } else if (lang === 'rus') {
+    getChildren(ruSpans)
+      .filter((gc) => !gc.classList.contains('hidden'))
+      .forEach((gc) => gc.classList.add('hidden'));
+    ruSpans.forEach((rs) => rs.classList.add('hidden'));
+    getChildren(enSpans)
+      .filter((gc) => !gc.classList.contains(keyCase))
+      .forEach((gc) => gc.classList.remove('hidden'));
+    enSpans.forEach((es) => es.classList.remove('hidden'));
+  }
   return true;
 }
 
-function getVisibleKeyChilds() {
-  const visibleKeyChilds = [];
-  const keys = document.querySelectorAll('.key');
-  keys.forEach((key) => {
-    const keyChildren = [...key.children];
-    keyChildren.forEach((child) => {
-      if (child.tagName === 'SPAN' && !child.classList.contains('hidden')) {
-        visibleKeyChilds.push(child);
-      }
-    });
-  });
-  return visibleKeyChilds;
-}
-
 function useCaps() {
-  const visibleKeyChilds = getVisibleKeyChilds();
-  visibleKeyChilds.forEach((child) => {
+  const visibleKeyChildren = getVisibleKeyChildren();
+  visibleKeyChildren.forEach((child) => {
     const spans = [...child.children];
     spans.forEach((span) => {
       if (span.tagName === 'SPAN') {
@@ -43,8 +106,8 @@ function useCaps() {
 }
 
 function useLowerCase() {
-  const visibleKeyChilds = getVisibleKeyChilds();
-  visibleKeyChilds.forEach((child) => {
+  const visibleKeyChildren = getVisibleKeyChildren();
+  visibleKeyChildren.forEach((child) => {
     const spans = [...child.children];
     spans.forEach((span) => {
       if (span.tagName === 'SPAN') {
@@ -85,7 +148,7 @@ function renderChars(event) {
     key.classList.add('active');
     if (key.classList.contains('AltLeft')) {
       if (event.ctrlKey) {
-        toggleLang();
+        toggleLang(key);
       }
     }
     const { textarea } = appContainer;
