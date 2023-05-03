@@ -139,8 +139,10 @@ function renderChars(event) {
     textContent = target.textContent;
     key = target.closest('.key');
   } else if (event.type === 'keydown') {
-    textContent = event.key;
     key = document.querySelector(`.${event.code}`);
+    const keyChildren = [...key.children].filter((child) => !child.classList.contains('hidden'));
+    const keyGrandChildren = [...keyChildren[0].children].filter((child) => !child.classList.contains('hidden'));
+    textContent = keyGrandChildren[0].textContent;
   }
   if (key.classList.contains('CapsLock')) {
     toggleCapsLock(key);
