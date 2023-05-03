@@ -67,12 +67,6 @@ function toggleCapsLock(key) {
   }
 }
 
-function isCtrlLeftActive() {
-  const keys = [...document.querySelectorAll('.key')];
-  const ctrlLeft = keys.filter((key) => key.classList.contains('ControlLeft'));
-  return ctrlLeft[0].classList.contains('active');
-}
-
 function renderChars(event) {
   let key;
   let textContent;
@@ -90,7 +84,7 @@ function renderChars(event) {
   } else {
     key.classList.add('active');
     if (key.classList.contains('AltLeft')) {
-      if (isCtrlLeftActive()) {
+      if (event.ctrlKey) {
         toggleLang();
       }
     }
