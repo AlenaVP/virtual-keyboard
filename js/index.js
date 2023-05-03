@@ -76,6 +76,7 @@ function toggleLang(key) {
       .filter((gc) => gc.classList.contains(keyCase))
       .forEach((gc) => gc.classList.remove('hidden'));
     ruSpans.forEach((rs) => rs.classList.remove('hidden'));
+    lang = 'rus';
   } else if (lang === 'rus') {
     getChildren(ruSpans)
       .filter((gc) => !gc.classList.contains('hidden'))
@@ -85,6 +86,7 @@ function toggleLang(key) {
       .filter((gc) => !gc.classList.contains(keyCase))
       .forEach((gc) => gc.classList.remove('hidden'));
     enSpans.forEach((es) => es.classList.remove('hidden'));
+    lang = 'eng';
   }
   return true;
 }
@@ -179,6 +181,18 @@ function deaktivateKey() {
   const keys = [...document.querySelectorAll('.key')];
   keys.filter((k) => k.classList.contains('active') && !k.classList.contains('CapsLock')).forEach((k) => k.classList.remove('active'));
 }
+
+function setLocalStorage() {
+  localStorage.setItem('kbLang', lang);
+}
+
+function getLocalStorage() {
+  lang = localStorage.getItem('kbLang') || 'eng';
+}
+
+window.addEventListener('beforeunload', setLocalStorage);
+
+window.addEventListener('load', getLocalStorage);
 
 appContainer.keyboard.addEventListener('mousedown', renderChars);
 

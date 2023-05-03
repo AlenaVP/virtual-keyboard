@@ -11,8 +11,11 @@ class AppContainer {
     container.append(new Label().element);
     const textarea = new Textarea().element;
     container.append(textarea);
-    const keyboard = new Keyboard().element;
+
+    const lang = localStorage.getItem('kbLang') || 'eng';
+    const keyboard = new Keyboard(lang).element;
     container.append(keyboard);
+
     container.append(new Paragraph('description', 'Клавиатура создана в операционной системе Windows').element);
     container.append(new Paragraph('language', 'Для переключения языка комбинация: левыe ctrl + alt').element);
 
